@@ -223,7 +223,7 @@ public class Agenda {
     }
 
     // Remover obterAniversioAgenda e obterRelacaoAgenda <- Original deve ficar em MENU.CLASS
-    
+
     public static LocalDate obterAniversarioAgenda() {
         LocalDate aniversario = null;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
