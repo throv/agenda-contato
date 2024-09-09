@@ -7,6 +7,8 @@ import ada.tech.agenda.util.SmsTwilio;
 import ada.tech.agenda.util.Util;
 import com.twilio.exception.ApiException;
 import com.twilio.exception.AuthenticationException;
+//import com.twilio.exception.ApiException;
+//import com.twilio.exception.AuthenticationException;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -22,7 +24,7 @@ public class Menu {
         agenda = new Agenda();
     }
 
-    public void iniciar() {
+    public void iniciar() throws ContatoNaoEncontradoException {
 
         int opcao = 0;
 
@@ -76,7 +78,7 @@ public class Menu {
                     break;
 
                 case 3:
-                    menuEditarContato();
+                    MenuEditar.menuEditarContato();
                     break;
 
                 case 4:
@@ -170,14 +172,8 @@ public class Menu {
         }
     }
 
-    public void menuEditarContato() {
-        System.out.print("Qual contato você deseja editar: ");
-        String buscarTelefone = entrada.nextLine();
-        try {
-            agenda.editarContato(buscarTelefone);
-        } catch (ContatoNaoEncontradoException e) {
-            System.out.println("");
-        }
+    public void menuEditarContato() throws ContatoNaoEncontradoException {
+        MenuEditar.menuEditarContato();
     }
 
     public void menuDetalharContato() {
