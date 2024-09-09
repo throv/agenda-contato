@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class MenuEditar {
 
     public static void menuEditarContato() throws ContatoNaoEncontradoException {
-        //00
         Scanner sc = new Scanner(System.in);
         System.out.print("Informe o telefone que deseja editar: ");
         String buscarTelefone = sc.nextLine();
@@ -91,16 +90,13 @@ public class MenuEditar {
                 Agenda.editarEmail(contato);;
                 break;
             case 4:
-                System.out.print("Novo apelido: ");
-                contato.setApelido(scanner.nextLine());
+                Agenda.editarApelido(contato);
                 break;
             case 5:
-                System.out.print("Nova relação (ex: AMIGO, FAMILIAR, COLEGA): ");
-                contato.setRelacao(Relacao.valueOf(scanner.nextLine().toUpperCase()));
+                Agenda.editarRelacao(contato);
                 break;
             case 6:
-                System.out.print("Novo aniversário (yyyy-mm-dd): ");
-                contato.setAniversario(LocalDate.parse(scanner.nextLine()));
+                Agenda.editarAniversario(contato);
                 break;
             default:
                 System.out.println("Opção inválida.");
@@ -112,12 +108,11 @@ public class MenuEditar {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Editar Contato Profissional");
-        System.out.println("1. Alterar nome");
-        System.out.println("2. Alterar sobrenome");
-        System.out.println("3. Alterar telefone");
-        System.out.println("4. Alterar email");
-        System.out.println("5. Alterar cargo");
-        System.out.println("6. Alterar empresa");
+        System.out.println("1. Alterar nome");;
+        System.out.println("2. Alterar telefone");
+        System.out.println("3. Alterar email");
+        System.out.println("4. Alterar cargo");
+        System.out.println("5. Alterar empresa");
 
         int opcao = scanner.nextInt();
         scanner.nextLine();  // Consumir nova linha
@@ -133,10 +128,10 @@ public class MenuEditar {
                 Agenda.editarEmail(contato);
                 break;
             case 4:
-                Agenda.editarEmail(contato);
+                Agenda.editarCargo(contato);
                 break;
             case 5:
-                Agenda.editarEmpresa();
+                Agenda.editarEmpresa(contato);
                 break;
             default:
                 System.out.println("Opção inválida.");

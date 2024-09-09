@@ -44,7 +44,7 @@ public class ContatoPessoal extends Contato {
 
     @Override
     public String toString() {
-        return String.format("""
+        String dados= String.format("""
             
             = ------=== DADOS DO CONTATO PESSOAL ===-------
             | Nome: %s %s
@@ -55,5 +55,14 @@ public class ContatoPessoal extends Contato {
             | Aniversário: %s
             = ---------------------------------------------
             """, getNome(), getSobreNome(), getTelefone(), getEmail(), apelido, relacao.name(), aniversario.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        String mensagens = "| ====== MENSAGENS =======\n";
+        if (getMensagens() != null && !getMensagens().isEmpty()) {
+            for (Mensagem mensagem : getMensagens()) {
+                mensagens += mensagem.getTexto() + "\n";
+            }
+        }else{
+            mensagens+= "Este contato não possui mensagens\n";
+        }
+        return  dados + mensagens + "\\ ==============================";
     }
 }
