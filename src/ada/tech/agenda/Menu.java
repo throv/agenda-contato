@@ -200,9 +200,12 @@ public class Menu {
         try {
             Contato contato = agenda.buscarContatoPorTelefone(telefone);
             System.out.print("\nDigite a mensagem: ");
-            String mensagem = entrada.nextLine();
+            String texto = entrada.nextLine();
             SmsTwilio sms = new SmsTwilio();
-            sms.enviarSms(mensagem,contato);
+            Mensagem mensagem= new Mensagem(contato.getTelefone(),texto);
+            sms.enviarSms(mensagem);
+            System.out.println("Mensagem enviada para " + contato.getNome() + " com sucesso!");
+            contato.adicionarMensagem(mensagem);
         } catch (ContatoNaoEncontradoException e) {
             Util.erro("Erro! Contato não encontrado.\n");
         }catch (ApiException e){
@@ -411,5 +414,9 @@ public class Menu {
 
         return aniversario;
     }
+
+
+
+
 
 }

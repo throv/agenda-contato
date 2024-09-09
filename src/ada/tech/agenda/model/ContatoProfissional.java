@@ -31,7 +31,7 @@ public class ContatoProfissional extends Contato {
 
     @Override
     public String toString() {
-        return String.format("""
+        String dados= String.format("""
             
             / ====== DADOS DO CONTATO PROFISSIONAL =======
             | Nome: %s %s
@@ -39,7 +39,18 @@ public class ContatoProfissional extends Contato {
             | E-mail: %s
             | Cargo: %s
             | Empresa: %s
-            \\ ============================================
+        
             """, getNome(), getSobreNome(), getTelefone(), getEmail(), cargo, empresa);
+        String mensagens = "| ====== MENSAGENS =======\n";
+        if (getMensagens() != null && !getMensagens().isEmpty()) {
+            for (Mensagem mensagem : getMensagens()) {
+                mensagens += mensagem.getTexto() + "\n";
+            }
+        }else{
+            mensagens+= "Este contato não possui mensagens\n";
+        }
+        return  dados + mensagens + "\\ ==============================";
+
+
     }
 }
