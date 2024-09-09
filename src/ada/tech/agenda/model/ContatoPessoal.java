@@ -1,5 +1,7 @@
 package ada.tech.agenda.model;
 
+import ada.tech.agenda.util.Util;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -46,23 +48,23 @@ public class ContatoPessoal extends Contato {
     public String toString() {
         String dados= String.format("""
             
-            / ====== DADOS DO CONTATO PESSOAL =======
+            = ------=== DADOS DO CONTATO PESSOAL ===-------
             | Nome: %s %s
             | Telefone: %s
             | E-mail: %s
             | Apelido: %s
             | Relação: %s
             | Aniversário: %s
-            
-            """, getNome(), getSobreNome(), getTelefone(), getEmail(), apelido, relacao.name(), aniversario.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        String mensagens = "| ====== MENSAGENS =======\n";
+            = ---------------------------------------------
+            """, getNome(), getSobreNome(), Util.formatarTelefone(getTelefone()), getEmail(), apelido, relacao.name(), aniversario.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        String mensagens = "\n= ---------=== MENSAGENS ===----------- =\n";
         if (getMensagens() != null && !getMensagens().isEmpty()) {
             for (Mensagem mensagem : getMensagens()) {
                 mensagens += mensagem.getTexto() + "\n";
             }
         }else{
-            mensagens+= "Este contato não possui mensagens\n";
+            mensagens+= "    Este contato não possui mensagens\n";
         }
-        return  dados + mensagens + "\\ ==============================";
+        return  dados + mensagens + "= ------------------------------------- =";
     }
 }

@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+
 public class Menu {
 
     private final Scanner entrada;
@@ -164,25 +165,32 @@ public class Menu {
         System.out.print("\nInforme um número de tefone: ");
         String numeroTelefone = entrada.nextLine();
 
+        String numeroTelefoneLimpo = numeroTelefone.replaceAll("[^0-9]", "");
+
         try {
-            agenda.excluirContato(numeroTelefone);
+            agenda.excluirContato(numeroTelefoneLimpo);
             System.out.println("\nCONTATO EXCLUIDO COM SUCESSO!");
         } catch (ContatoNaoEncontradoException e) {
-            System.out.println(e.getMessage());
+            Util.erro("ERRO! Contato não encontrado.\n");
         }
     }
 
+
     public void menuEditarContato() throws ContatoNaoEncontradoException {
         MenuEditar.menuEditarContato();
+
     }
 
     public void menuDetalharContato() {
         System.out.print("Qual contato você deseja detalhar: ");
-        String telefone = entrada.next();
+        String telefone = entrada.nextLine();
+
+        String telefoneLimpo = telefone.replaceAll("[^0-9]", "");
+
         try {
-            agenda.detalharContato(telefone);
+            agenda.detalharContato(telefoneLimpo);
         } catch (ContatoNaoEncontradoException e) {
-            System.out.println(e.getMessage());
+            Util.erro("ERRO! Contato não encontrado.\n");
         }
     }
 
@@ -221,7 +229,7 @@ public class Menu {
         try {
             agenda.buscarContatoPorNome(nome);
         } catch (ContatoNaoEncontradoException e) {
-            System.out.println("Nenhum contato encontrado!");
+            Util.erro("ERRO! Contato não encontrado.");
         }
     }
 
@@ -272,8 +280,7 @@ public class Menu {
 
         String emailEmpresa = obterEmail();
 
-        System.out.print("\nInforme o CNPJ da empresa: ");
-        String cnpjEmpresa = entrada.nextLine();
+        String cnpjEmpresa = obterCnpj();
 
         System.out.print("\nInforme o logradouro da empresa: ");
         String logradouroEmpresa = entrada.nextLine();
@@ -281,14 +288,15 @@ public class Menu {
         System.out.print("\nInforme o segmento da empresa: ");
         String segmentoEmpresa = entrada.nextLine();
 
-        Contato contatoEmpresa = new ContatoEmpresa(
-                nomeEmpresa, telefoneEmpresa, emailEmpresa, 0, cnpjEmpresa, logradouroEmpresa, segmentoEmpresa);
-
         try {
+            Contato contatoEmpresa = new ContatoEmpresa(
+                    nomeEmpresa, telefoneEmpresa, emailEmpresa, 0, cnpjEmpresa, logradouroEmpresa, segmentoEmpresa);
             agenda.adicionarContato(contatoEmpresa);
             System.out.println("\nCONTATO EMPRESA ADICIONADO COM SUCESSO!");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro: " + e.getMessage());
         } catch (TelefoneExistenteException e) {
-            System.out.println("ERRO");
+            System.out.println("ERRO: Telefone já cadastrado.");
         }
     }
 
@@ -354,11 +362,17 @@ public class Menu {
         while (true) {
             System.out.print("\nInforme o telefone: ");
             String telefone = entrada.nextLine();
-            if (telefone.matches("\\d+")) {
-                return telefone;
-            } else {
-                System.out.println("\nERRO! O telefone deve conter apenas números.");
+
+            if (!telefone.matches("\\d+")) {
+                Util.erro("ERRO! O telefone deve conter apenas números.\n");
+                continue;
             }
+            if (telefone.length() != 11) {
+                Util.erro("ERRO! Telefone deve conter 11 dígitos.\n");
+                continue;
+            }
+
+            return telefone;
         }
     }
 
@@ -375,7 +389,7 @@ public class Menu {
     }
 
     public Relacao obterRelacao() {
-        System.out.println("= -------==== Relação ===------- =");
+        System.out.println("\n= -------==== Relação ===------- =");
         for (Relacao r : Relacao.values()) {
             System.out.println("| " + r.ordinal() + " - " + r.name());
         }
@@ -409,6 +423,25 @@ public class Menu {
         }
 
         return aniversario;
+    }
+
+    private String obterCnpj() {
+        while (true) {
+            System.out.print("\nInforme o CNPJ: ");
+            String cnpj = entrada.nextLine();
+
+            if (!cnpj.matches("\\d+")) {
+                System.out.println("\nERRO! O CNPJ deve conter apenas números.");
+                continue;
+            }
+
+            if (cnpj.length() != 14) {
+                System.out.println("\nERRO! O CNPJ deve conter exatamente 14 dígitos.");
+                continue;
+            }
+
+            return cnpj;
+        }
     }
 
 

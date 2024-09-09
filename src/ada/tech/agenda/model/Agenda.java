@@ -15,6 +15,7 @@ import static java.awt.SystemColor.MENU;
 import static java.awt.SystemColor.menu;
 
 public class Agenda {
+
     static List<Contato> listaContatos;
 
     public Agenda() {
@@ -308,21 +309,23 @@ public class Agenda {
         int tamanhoNome = 15;
         int tamanhoTelefone = 18;
         int tamanhoEmail = 25;
+        int tamanhoTipoContato = 20;
 
-        System.out.println("=" + "-".repeat(tamanhoId + tamanhoNome + tamanhoTelefone + tamanhoEmail + 11) + "=");
-        System.out.printf("| %-" + tamanhoId + "s | %-" + tamanhoNome + "s | %-" + tamanhoTelefone + "s | %-" + tamanhoEmail + "s |%n",
-                "ID", "Nome", "Telefone", "E-mail");
-        System.out.println("=" + "-".repeat(tamanhoId + tamanhoNome + tamanhoTelefone + tamanhoEmail + 11) + "=");
+
+        System.out.println("=" + "-".repeat(tamanhoId + tamanhoNome + tamanhoTelefone + tamanhoEmail + tamanhoTipoContato + 14) + "=");
+        System.out.printf("| %-" + tamanhoId + "s | %-" + tamanhoNome + "s | %-" + tamanhoTelefone + "s | %-" + tamanhoEmail + "s | %-" + tamanhoTipoContato + "s | %n",
+                "ID", "Nome", "Telefone", "E-mail", "Tipo do Contato");
+        System.out.println("=" + "-".repeat(tamanhoId + tamanhoNome + tamanhoTelefone + tamanhoEmail + tamanhoTipoContato + 14) + "=");
 
         for (Contato contato : listaContatos) {
-
-            System.out.printf("| %-" + tamanhoId + "d | %-" + tamanhoNome + "s | %-" + tamanhoTelefone + "s | %-" + tamanhoEmail + "s |%n",
+            String tipoContato = contato.getClass().getSimpleName();
+            System.out.printf("| %-" + tamanhoId + "d | %-" + tamanhoNome + "s | %-" + tamanhoTelefone + "s | %-" + tamanhoEmail + "s | %-" + tamanhoTipoContato + "s | %n",
                     contato.getID(),
                     formatarNome(contato.getNome()) + " " + formatarNome(contato.getSobreNome()),
                     formatarTelefone(contato.getTelefone()),
-                    contato.getEmail()
-            );
-            System.out.println("=" + "-".repeat(tamanhoId + tamanhoNome + tamanhoTelefone + tamanhoEmail + 11) + "=");
+                    contato.getEmail(),
+                    tipoContato);
+            System.out.println("=" + "-".repeat(tamanhoId + tamanhoNome + tamanhoTelefone + tamanhoEmail + tamanhoTipoContato + 14) + "=");
         }
         System.out.println();
     }

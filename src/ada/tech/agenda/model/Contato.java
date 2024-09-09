@@ -33,12 +33,12 @@ public class Contato {
     public String toString() {
         String dados = String.format("""
 
-                / ====== DADOS DO CONTATO =======
+                = --------=== DADOS DO CONTATO ===--------
                 | ID: %s
                 | Nome: %s %s
                 | Telefone: %s
                 | E-mail: %s
-                
+                = ----------------------------------------
                 """, ID, nome, sobreNome, telefone, email);
         String mensagens = "| ====== MENSAGENS =======\n";
         if (this.mensagens != null && !this.mensagens.isEmpty()) {
@@ -49,7 +49,6 @@ public class Contato {
             mensagens+= "Este contato não possui mensagens\n";
         }
         return  dados + mensagens + "\\ ==============================";
-
 
     }
 

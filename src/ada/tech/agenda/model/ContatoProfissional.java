@@ -1,5 +1,7 @@
 package ada.tech.agenda.model;
 
+import ada.tech.agenda.util.Util;
+
 public class ContatoProfissional extends Contato {
 
     private String cargo;
@@ -33,23 +35,23 @@ public class ContatoProfissional extends Contato {
     public String toString() {
         String dados= String.format("""
             
-            / ====== DADOS DO CONTATO PROFISSIONAL =======
+            = ----=== DADOS DO CONTATO PROFISSIONAL ===----
             | Nome: %s %s
             | Telefone: %s
             | E-mail: %s
             | Cargo: %s
             | Empresa: %s
-        
-            """, getNome(), getSobreNome(), getTelefone(), getEmail(), cargo, empresa);
-        String mensagens = "| ====== MENSAGENS =======\n";
+            = ---------------------------------------------
+            """, getNome(), getSobreNome(), Util.formatarTelefone(getTelefone()), getTelefone(), getEmail(), cargo, empresa);
+        String mensagens = "\n= ---------=== MENSAGENS ===----------- =\n";
         if (getMensagens() != null && !getMensagens().isEmpty()) {
             for (Mensagem mensagem : getMensagens()) {
                 mensagens += mensagem.getTexto() + "\n";
             }
         }else{
-            mensagens+= "Este contato não possui mensagens\n";
+            mensagens+= "    Este contato não possui mensagens\n";
         }
-        return  dados + mensagens + "\\ ==============================";
+        return  dados + mensagens + "= ------------------------------------- =";
 
 
     }
