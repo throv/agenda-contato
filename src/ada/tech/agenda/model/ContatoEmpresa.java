@@ -19,7 +19,7 @@ public class ContatoEmpresa extends Contato {
 
     @Override
     public String toString() {
-        return String.format("""
+        String dados = String.format("""
 
                 = ------=== DADOS DA EMPRESA ===-------
                 | ID: %s
@@ -31,6 +31,17 @@ public class ContatoEmpresa extends Contato {
                 | CNPJ: %s
                 = -------------------------------------
                 """,getID(), getNome(), getTelefone(), getEmail(), getLogradouro(), getSegmento(), getCnpj());
+        String mensagens = "| ====== MENSAGENS =======\n";
+        if (getMensagens() != null && !getMensagens().isEmpty()) {
+            for (Mensagem mensagem : getMensagens()) {
+                mensagens += mensagem.getTexto() + "\n";
+            }
+        }else{
+            mensagens+= "Este contato não possui mensagens\n";
+        }
+        return  dados + mensagens + "\\ ==============================";
+
+
     }
 
     public String getCnpj() {
