@@ -8,5 +8,29 @@
     "telefone": "96991981326",
     "email": "alan@teste",
     "ID": 1
+  },
+  {
+    "cnpj": "84000918000120",
+    "logradouro": "Rua Camargo Correia - Nº 15",
+    "segmento": "Logistica",
+    "tipo": "ContatoEmpresa",
+    "nome": "Valinho SA",
+    "sobreNome": "",
+    "telefone": "11998903515",
+    "email": "contato@valinhos.com.br",
+    "ID": 2,
+    "mensagens": []
+  },
+  {
+    "apelido": "Cheiroso2.0",
+    "relacao": "FILHO",
+    "aniversario": "20/04/1993",
+    "tipo": "ContatoPessoal",
+    "nome": "dada",
+    "sobreNome": "dadw",
+    "telefone": "11985202025",
+    "email": "pedrodobem@gmail.com",
+    "ID": 3,
+    "mensagens": []
   }
 ]
