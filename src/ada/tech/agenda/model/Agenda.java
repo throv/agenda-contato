@@ -222,7 +222,7 @@ public class Agenda {
         Persistencia.gravarContatos(listaContatos);
     }
 
-    // Remover obterAniversioAgenda e obterRelacaoAgenda <- Original deve ficar em MENU.CLASS
+    // Remover 1 obterAniversioAgenda e obterRelacaoAgenda <- Original deve ficar em MENU.CLASS
 
     public static LocalDate obterAniversarioAgenda() {
         LocalDate aniversario = null;
