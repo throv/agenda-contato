@@ -1,5 +1,8 @@
 package ada.tech.agenda.model;
 
+import ada.tech.agenda.Menu;
+import ada.tech.agenda.exception.ContatoNaoEncontradoException;
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -8,7 +11,7 @@ public class Login {
     private String emailColetado;
     private String senhaColetada;
 
-    public void verificarExistenciaLogin() throws IOException {
+    public void verificarExistenciaLogin() throws IOException, ContatoNaoEncontradoException {
         File arquivo = new File("DadosUsuario.TXT");
 
         if (arquivo.exists()) {
@@ -41,7 +44,7 @@ public class Login {
 
     }
 
-    public void fazerLogin() throws IOException {
+    public void fazerLogin() throws IOException, ContatoNaoEncontradoException {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Digite seu email: ");
@@ -53,11 +56,12 @@ public class Login {
 
     }
 
-    public void validarLogin(String email, String senha) throws IOException {
+    public void validarLogin(String email, String senha) throws IOException, ContatoNaoEncontradoException {
         coletarDadosLogin();
         if (email.equals(emailColetado) && senha.equals(senhaColetada)) {
             System.out.println("Login efetuado com sucesso");
-            // colocar para iniciar o menu agenda
+            Menu menu = new Menu();
+            menu.iniciar();
         } else {
             System.out.println("Login e Senha errada");
             fazerLogin(); // Pratica escrota, não usar

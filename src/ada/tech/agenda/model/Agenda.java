@@ -99,7 +99,7 @@ public class Agenda {
                 System.out.println("Opção inválida!");
         }
 
-        Persistencia.gravarContatos(this.listaContatos);
+        Persistencia.gravarContatos(listaContatos);
     }
 
     public static void editarNome(Contato contato) {
@@ -111,6 +111,7 @@ public class Agenda {
         String novoSobrenome = sc.next();
         contato.setSobreNome(novoSobrenome);
         System.out.println("\nCONTATO EDITADO!");
+        Persistencia.gravarContatos(listaContatos);
     }
 
     public static void editarTelefone(Contato contato) {
@@ -130,6 +131,7 @@ public class Agenda {
             contato.setTelefone(novoNumero);
             System.out.println("\nCONTATO EDITADO!");
         }
+        Persistencia.gravarContatos(listaContatos);
     }
 
     public static void editarEmail(Contato contato) {
@@ -143,6 +145,7 @@ public class Agenda {
             contato.setEmail(novoEmail);
             System.out.println("\nCONTATO EDITADO!");
         }
+        Persistencia.gravarContatos(listaContatos);
     }
 
     public static void editarCNPJ(ContatoEmpresa contato) {
@@ -151,6 +154,7 @@ public class Agenda {
         String novoCPF = sc.next();
         contato.setCnpj(novoCPF);
         System.out.println("\nCONTATO EDITADO!");
+        Persistencia.gravarContatos(listaContatos);
     }
 
     public static void editarEmpresa(ContatoProfissional contato) {
@@ -159,6 +163,7 @@ public class Agenda {
         String novoNome = sc.next();
         contato.setEmpresa(novoNome);
         System.out.println("\nCONTATO EDITADO!");
+        Persistencia.gravarContatos(listaContatos);
     }
 
     public static void editarLogradouro(ContatoEmpresa contato) {
@@ -167,6 +172,7 @@ public class Agenda {
         String novoNome = sc.next();
         contato.setLogradouro(novoNome);
         System.out.println("\nCONTATO EDITADO!");
+        Persistencia.gravarContatos(listaContatos);
     }
 
     public static void editarSegmento(ContatoEmpresa contato) {
@@ -175,6 +181,7 @@ public class Agenda {
         String novoSegmento = sc.next();
         contato.setSegmento(novoSegmento);
         System.out.println("\nCONTATO EDITADO!");
+        Persistencia.gravarContatos(listaContatos);
     }
 
     public static void editarApelido(ContatoPessoal contato) {
@@ -183,6 +190,7 @@ public class Agenda {
         String novoApelido = sc.next();
         contato.setApelido(novoApelido);
         System.out.println("\nCONTATO EDITADO!");
+        Persistencia.gravarContatos(listaContatos);
     }
 
     public static void editarRelacao(ContatoPessoal contato) {
@@ -191,6 +199,7 @@ public class Agenda {
         String novoNome = sc.next();
         contato.setRelacao(Relacao.valueOf(novoNome));
         System.out.println("\nCONTATO EDITADO!");
+        Persistencia.gravarContatos(listaContatos);
     }
 
     public static void editarAniversario(ContatoPessoal contato) {
@@ -199,6 +208,7 @@ public class Agenda {
         LocalDate novoAniversario = LocalDate.parse(sc.next());
         contato.setAniversario(novoAniversario);
         System.out.println("\nCONTATO EDITADO!");
+        Persistencia.gravarContatos(listaContatos);
     }
 
     public static void editarCargo(ContatoProfissional contato) {
@@ -207,6 +217,7 @@ public class Agenda {
         String novoNome = sc.next();
         contato.setCargo(novoNome);
         System.out.println("CONTATO EDITADO! \n");
+        Persistencia.gravarContatos(listaContatos);
     }
 
     public void detalharContato(String telefone) throws ContatoNaoEncontradoException {
