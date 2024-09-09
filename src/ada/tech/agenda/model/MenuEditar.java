@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class MenuEditar {
 
     public static void menuEditarContato() throws ContatoNaoEncontradoException {
-
+        //00
         Scanner sc = new Scanner(System.in);
         System.out.print("Informe o telefone que deseja editar: ");
         String buscarTelefone = sc.nextLine();
