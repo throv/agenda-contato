@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Agenda {
 //
-    List<Contato> listaContatos;
+static List<Contato> listaContatos;
 
     public Agenda() {
 
@@ -152,7 +152,7 @@ public class Agenda {
         System.out.println("\nCONTATO EDITADO!");
     }
 
-    public static void editarEmpresa() {
+    public static void editarEmpresa(ContatoEmpresa contato) {
         Scanner sc = new Scanner(System.in);
         System.out.print("\nInforme o primeiro nome: ");
         String novoNome = sc.next();
