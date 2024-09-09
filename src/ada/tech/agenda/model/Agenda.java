@@ -9,8 +9,8 @@ import ada.tech.agenda.util.Persistencia;
 import java.util.*;
 
 public class Agenda {
-//
-static List<Contato> listaContatos;
+
+    static List<Contato> listaContatos;
 
     public Agenda() {
 
@@ -156,7 +156,7 @@ static List<Contato> listaContatos;
         Scanner sc = new Scanner(System.in);
         System.out.print("\nInforme o primeiro nome: ");
         String novoNome = sc.next();
-        contato.setNome(novoNome);
+        //ContatoEmpresa.(novoNome);
         System.out.println("\nCONTATO EDITADO!");
     }
 
