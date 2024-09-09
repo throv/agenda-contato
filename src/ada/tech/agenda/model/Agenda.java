@@ -6,6 +6,7 @@ import ada.tech.agenda.exception.TelefoneExistenteException;
 import ada.tech.agenda.util.Persistencia;
 
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class Agenda {
@@ -145,76 +146,67 @@ public class Agenda {
 
     public static void editarCNPJ(ContatoEmpresa contato) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("\nInforme o primeiro nome: ");
-        String novoNome = sc.next();
-        contato.setNome(novoNome);
+        System.out.print("Informe o novo CPF: ");
+        String novoCPF = sc.next();
+        contato.setCnpj(novoCPF);
         System.out.println("\nCONTATO EDITADO!");
     }
 
-    public static void editarEmpresa() {
+    public static void editarEmpresa(ContatoProfissional contato) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("\nInforme o primeiro nome: ");
+        System.out.print("\nInforme o novo nome da empresa: ");
         String novoNome = sc.next();
-        //ContatoEmpresa.(novoNome);
+        contato.setEmpresa(novoNome);
         System.out.println("\nCONTATO EDITADO!");
     }
 
     public static void editarLogradouro(ContatoEmpresa contato) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("\nInforme o primeiro nome: ");
+        System.out.print("\nInforme o novo endereço: ");
         String novoNome = sc.next();
-        contato.setNome(novoNome);
+        contato.setLogradouro(novoNome);
         System.out.println("\nCONTATO EDITADO!");
     }
 
     public static void editarSegmento(ContatoEmpresa contato) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("\nInforme o primeiro nome: ");
-        String novoNome = sc.next();
-        contato.setNome(novoNome);
+        System.out.print("\nInforme o novo seguemento: ");
+        String novoSegmento = sc.next();
+        contato.setSegmento(novoSegmento);
         System.out.println("\nCONTATO EDITADO!");
     }
 
     public static void editarApelido(ContatoPessoal contato) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("\nInforme o primeiro nome: ");
-        String novoNome = sc.next();
-        contato.setNome(novoNome);
+        System.out.print("\nInforme o novo apelido: ");
+        String novoApelido = sc.next();
+        contato.setApelido(novoApelido);
         System.out.println("\nCONTATO EDITADO!");
     }
 
     public static void editarRelacao(ContatoPessoal contato) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("\nInforme o primeiro nome: ");
+        System.out.print("Infome a nova relação: ");
         String novoNome = sc.next();
-        contato.setNome(novoNome);
+        contato.setRelacao(Relacao.valueOf(novoNome));
         System.out.println("\nCONTATO EDITADO!");
     }
 
     public static void editarAniversario(ContatoPessoal contato) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("\nInforme o primeiro nome: ");
-        String novoNome = sc.next();
-        contato.setNome(novoNome);
+        System.out.print("\nInforme a nova data de aniversario:  ");
+        LocalDate novoAniversario = LocalDate.parse(sc.next());
+        contato.setAniversario(novoAniversario);
         System.out.println("\nCONTATO EDITADO!");
     }
 
     public static void editarCargo(ContatoProfissional contato) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("\nInforme o primeiro nome: ");
+        System.out.print("Informe o novo cargo: " );
         String novoNome = sc.next();
-        contato.setNome(novoNome);
-        System.out.println("\nCONTATO EDITADO!");
+        contato.setCargo(novoNome);
+        System.out.println("CONTATO EDITADO! \n");
     }
-
-    public static void editarSegmento(ContatoProfissional contato) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("\nInforme o primeiro nome: ");
-        String novoNome = sc.next();
-        contato.setNome(novoNome);
-        System.out.println("\nCONTATO EDITADO!");
-    }
-
 
     public void detalharContato(String telefone) throws ContatoNaoEncontradoException {
         Contato contato = buscarContatoPorTelefone(telefone);
