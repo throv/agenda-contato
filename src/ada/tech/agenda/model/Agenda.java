@@ -18,16 +18,6 @@ public class Agenda {
 
     }
 
-    public int retornaIndiceElemento(List<Contato> arrayContatos, String telefone) {
-        for (int i = 0; i < arrayContatos.size(); i++) {
-
-            if (arrayContatos.get(i).getTelefone().equals(telefone)) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
     public void buscarContatoPorNome(String nomeContato) throws ContatoNaoEncontradoException {
 
         List<Contato> contatoBuscado = new ArrayList<>();
@@ -167,6 +157,9 @@ public class Agenda {
     }
 
     public String formatarNome(String nome) {
+        if (nome == null || nome.isEmpty()) {
+            return "";
+        }
         return Character.toUpperCase(nome.charAt(0)) + nome.substring(1).toLowerCase();
     }
 
@@ -194,6 +187,7 @@ public class Agenda {
         System.out.println("=" + "-".repeat(tamanhoId + tamanhoNome + tamanhoTelefone + tamanhoEmail + 11) + "=");
 
         for (Contato contato : listaContatos) {
+
             System.out.printf("| %-" + tamanhoId + "d | %-" + tamanhoNome + "s | %-" + tamanhoTelefone + "s | %-" + tamanhoEmail + "s |%n",
                     contato.getID(),
                     formatarNome(contato.getNome()) + " " + formatarNome(contato.getSobreNome()),
