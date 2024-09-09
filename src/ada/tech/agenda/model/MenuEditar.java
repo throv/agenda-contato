@@ -29,14 +29,21 @@ public class MenuEditar {
     public static void exibirMenuContatoEmpresa(ContatoEmpresa contato) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Editar Contato Empresa");
-        System.out.println("1. Alterar nome");
-        System.out.println("2. Alterar telefone");
-        System.out.println("3. Alterar email");
-        System.out.println("4. Alterar CNPJ");
-        System.out.println("5. Alterar logradouro");
-        System.out.println("6. Alterar segmento");
+        System.out.println("= ------------------------------- =");
+        System.out.println("|      EDITAR CONTATO EMPRESA     |");
+        System.out.println("= ------------------------------- =");
+        System.out.println();
+        System.out.println("= ----------=== Menu ===--------- =");
+        System.out.println("| 1 - Alterar nome                |");
+        System.out.println("| 2 - Alterar telefone            |");
+        System.out.println("| 3 - Alterar email               |");
+        System.out.println("| 4 - Alterar CNPJ                |");
+        System.out.println("| 5 - Alterar logradouro          |");
+        System.out.println("| 6 - Alterar segmento            |");
+        System.out.println("= ------------------------------- =");
 
+
+        System.out.print("Digite uma opção: ");
         int opcao = scanner.nextInt();
         scanner.nextLine();  // Consumir nova linha
 
@@ -68,14 +75,21 @@ public class MenuEditar {
     public static void exibirMenuContatoPessoal(ContatoPessoal contato) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("EDITR CONTATO PESSOAL");
-        System.out.println("1. Alterar nome");
-        System.out.println("2. Alterar telefone");
-        System.out.println("3. Alterar email");
-        System.out.println("4. Alterar apelido");
-        System.out.println("5. Alterar relação");
-        System.out.println("6. Alterar aniversário");
+        System.out.println("= ------------------------------- =");
+        System.out.println("|      EDITAR CONTATO PESSOAL     |");
+        System.out.println("= ------------------------------- =");
+        System.out.println();
+        System.out.println("= ----------=== Menu ===--------- =");
+        System.out.println("| 1 - Alterar nome                |");
+        System.out.println("| 2 - Alterar telefone            |");
+        System.out.println("| 3 - Alterar email               |");
+        System.out.println("| 4 - Alterar apelido             |");
+        System.out.println("| 5 - Alterar relação             |");
+        System.out.println("| 6 - Alterar aniversário         |");
+        System.out.println("= ------------------------------- =");
 
+
+        System.out.print("Digite uma opção: ");
         int opcao = scanner.nextInt();
         scanner.nextLine();  // Consumir nova linha
 
@@ -107,13 +121,20 @@ public class MenuEditar {
     public static void exibirMenuContatoProfissional(ContatoProfissional contato) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Editar Contato Profissional");
-        System.out.println("1. Alterar nome");;
-        System.out.println("2. Alterar telefone");
-        System.out.println("3. Alterar email");
-        System.out.println("4. Alterar cargo");
-        System.out.println("5. Alterar empresa");
+        System.out.println("= ------------------------------- =");
+        System.out.println("|   EDITAR CONTATO PROFISSIONAL   |");
+        System.out.println("= ------------------------------- =");
+        System.out.println();
+        System.out.println("= ----------=== Menu ===--------- =");
+        System.out.println("| 1 - Alterar nome                |");
+        System.out.println("| 2 - Alterar telefone            |");
+        System.out.println("| 3 - Alterar email               |");
+        System.out.println("| 4 - Alterar cargo               |");
+        System.out.println("| 5 - Alterar empresa             |");
+        System.out.println("= ------------------------------- =");
 
+
+        System.out.print("Digite uma opção: ");
         int opcao = scanner.nextInt();
         scanner.nextLine();  // Consumir nova linha
 

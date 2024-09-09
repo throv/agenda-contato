@@ -1,0 +1,25 @@
+[
+  {
+    "cargo": "Nada",
+    "empresa": "Ada",
+    "tipo": "ContatoProfissional",
+    "nome": "Alan",
+    "sobreNome": "Filho",
+    "telefone": "96991981326",
+    "email": "alan@gmail",
+    "ID": 1,
+    "mensagens": []
+  },
+  {
+    "cnpj": "37826406000138",
+    "logradouro": "São Paulo",
+    "segmento": "Tech",
+    "tipo": "ContatoEmpresa",
+    "nome": "Ada",
+    "sobreNome": "",
+    "telefone": "96991821326",
+    "email": "ada@tech",
+    "ID": 2,
+    "mensagens": []
+  }
+]
