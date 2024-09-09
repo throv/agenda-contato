@@ -101,7 +101,7 @@ public class Agenda {
         Persistencia.gravarContatos(this.listaContatos);
     }
 
-    private void editarNome(Contato contato) {
+    public static void editarNome(Contato contato) {
         Scanner sc = new Scanner(System.in);
         System.out.print("\nInforme o primeiro nome: ");
         String novoNome = sc.next();
@@ -112,7 +112,7 @@ public class Agenda {
         System.out.println("\nCONTATO EDITADO!");
     }
 
-    private void editarTelefone(Contato contato) {
+    public static void editarTelefone(Contato contato) {
         Scanner sc = new Scanner(System.in);
         System.out.print("\nInforme o novo número: ");
         String novoNumero = sc.next();
@@ -131,7 +131,7 @@ public class Agenda {
         }
     }
 
-    private void editarEmail(Contato contato) {
+    public static void editarEmail(Contato contato) {
         Scanner sc = new Scanner(System.in);
         System.out.print("\nInforme o seu e-mail: ");
         String novoEmail = sc.nextLine();
@@ -143,6 +143,79 @@ public class Agenda {
             System.out.println("\nCONTATO EDITADO!");
         }
     }
+
+    public static void editarCNPJ(ContatoEmpresa contato) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nInforme o primeiro nome: ");
+        String novoNome = sc.next();
+        contato.setNome(novoNome);
+        System.out.println("\nCONTATO EDITADO!");
+    }
+
+    public static void editarEmpresa() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nInforme o primeiro nome: ");
+        String novoNome = sc.next();
+        contato.setNome(novoNome);
+        System.out.println("\nCONTATO EDITADO!");
+    }
+
+    public static void editarLogradouro(ContatoEmpresa contato) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nInforme o primeiro nome: ");
+        String novoNome = sc.next();
+        contato.setNome(novoNome);
+        System.out.println("\nCONTATO EDITADO!");
+    }
+
+    public static void editarSegmento(ContatoEmpresa contato) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nInforme o primeiro nome: ");
+        String novoNome = sc.next();
+        contato.setNome(novoNome);
+        System.out.println("\nCONTATO EDITADO!");
+    }
+
+    public static void editarApelido(ContatoPessoal contato) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nInforme o primeiro nome: ");
+        String novoNome = sc.next();
+        contato.setNome(novoNome);
+        System.out.println("\nCONTATO EDITADO!");
+    }
+
+    public static void editarRelacao(ContatoPessoal contato) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nInforme o primeiro nome: ");
+        String novoNome = sc.next();
+        contato.setNome(novoNome);
+        System.out.println("\nCONTATO EDITADO!");
+    }
+
+    public static void editarAniversario(ContatoPessoal contato) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nInforme o primeiro nome: ");
+        String novoNome = sc.next();
+        contato.setNome(novoNome);
+        System.out.println("\nCONTATO EDITADO!");
+    }
+
+    public static void editarCargo(ContatoProfissional contato) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nInforme o primeiro nome: ");
+        String novoNome = sc.next();
+        contato.setNome(novoNome);
+        System.out.println("\nCONTATO EDITADO!");
+    }
+
+    public static void editarSegmento(ContatoProfissional contato) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nInforme o primeiro nome: ");
+        String novoNome = sc.next();
+        contato.setNome(novoNome);
+        System.out.println("\nCONTATO EDITADO!");
+    }
+
 
     public void detalharContato(String telefone) throws ContatoNaoEncontradoException {
         Contato contato = buscarContatoPorTelefone(telefone);
@@ -199,7 +272,7 @@ public class Agenda {
         System.out.println();
     }
 
-    public Contato buscarContatoPorTelefone(String telefone) throws ContatoNaoEncontradoException {
+    public static Contato buscarContatoPorTelefone(String telefone) throws ContatoNaoEncontradoException {
 
         for(Contato contato : listaContatos) {
             if(contato.getTelefone().equals(telefone)) {
