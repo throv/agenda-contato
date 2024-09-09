@@ -176,7 +176,7 @@ public class Menu {
         try {
             agenda.editarContato(buscarTelefone);
         } catch (ContatoNaoEncontradoException e) {
-            System.out.println("");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -289,7 +289,7 @@ public class Menu {
             agenda.adicionarContato(contatoEmpresa);
             System.out.println("\nCONTATO EMPRESA ADICIONADO COM SUCESSO!");
         } catch (TelefoneExistenteException e) {
-            System.out.println("ERRO");
+            System.out.println("ERRO ");
         }
     }
 

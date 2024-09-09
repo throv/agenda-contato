@@ -21,7 +21,7 @@ public class ContatoEmpresa extends Contato {
     public String toString() {
         return String.format("""
 
-                / ====== DADOS DA EMPRESA =======
+                = ------=== DADOS DA EMPRESA ===-------
                 | ID: %s
                 | Nome: %s %s
                 | Telefone: %s
@@ -29,7 +29,7 @@ public class ContatoEmpresa extends Contato {
                 | Logradouro: %s
                 | Segmento: %s
                 | CNPJ: %s
-                \\ ==============================
+                = -------------------------------------
                 """,getID(), getNome(), getTelefone(), getEmail(), getLogradouro(), getSegmento(), getCnpj());
     }
 

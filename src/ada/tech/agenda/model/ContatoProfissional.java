@@ -33,13 +33,13 @@ public class ContatoProfissional extends Contato {
     public String toString() {
         return String.format("""
             
-            / ====== DADOS DO CONTATO PROFISSIONAL =======
+            = ----=== DADOS DO CONTATO PROFISSIONAL ===----
             | Nome: %s %s
             | Telefone: %s
             | E-mail: %s
             | Cargo: %s
             | Empresa: %s
-            \\ ============================================
+            = ---------------------------------------------
             """, getNome(), getSobreNome(), getTelefone(), getEmail(), cargo, empresa);
     }
 }

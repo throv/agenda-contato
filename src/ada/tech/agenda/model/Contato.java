@@ -30,12 +30,12 @@ public class Contato {
     public String toString() {
         return String.format("""
 
-                / ====== DADOS DO CONTATO =======
+                = --------=== DADOS DO CONTATO ===--------
                 | ID: %s
                 | Nome: %s %s
                 | Telefone: %s
                 | E-mail: %s
-                \\ ==============================
+                = ----------------------------------------
                 """,ID, nome, sobreNome, telefone, email);
     }
 
