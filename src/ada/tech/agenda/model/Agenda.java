@@ -4,10 +4,15 @@ import ada.tech.agenda.Menu;
 import ada.tech.agenda.exception.ContatoNaoEncontradoException;
 import ada.tech.agenda.exception.TelefoneExistenteException;
 import ada.tech.agenda.util.Persistencia;
+import ada.tech.agenda.util.Util;
 
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
+
+import static java.awt.SystemColor.MENU;
+import static java.awt.SystemColor.menu;
 
 public class Agenda {
     static List<Contato> listaContatos;
@@ -149,10 +154,15 @@ public class Agenda {
 
     public static void editarCNPJ(ContatoEmpresa contato) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Informe o novo CPF: ");
+        System.out.print("Informe o novo CNPJ: ");
         String novoCPF = sc.next();
-        contato.setCnpj(novoCPF);
-        System.out.println("\nCONTATO EDITADO!");
+        try {
+            contato.setCnpj(novoCPF);
+            System.out.println("\nCONTATO EDITADO!");
+        }
+        catch (IllegalArgumentException e ) {
+            System.out.println("Numero de CNPJ invalido !");
+        }
         Persistencia.gravarContatos(listaContatos);
     }
 
@@ -194,21 +204,64 @@ public class Agenda {
 
     public static void editarRelacao(ContatoPessoal contato) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Infome a nova relação: ");
-        String novoNome = sc.next();
-        contato.setRelacao(Relacao.valueOf(novoNome));
+        Menu menu = new Menu();
+        System.out.println("Relação atual: " + contato.getRelacao());
+        Relacao novaRelacao = obterRelacaoAgenda();
+        contato.setRelacao(novaRelacao);
         System.out.println("\nCONTATO EDITADO!");
+        //System.out.println("Nova relação: " + contato.getRelacao());
         Persistencia.gravarContatos(listaContatos);
     }
 
     public static void editarAniversario(ContatoPessoal contato) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("\nInforme a nova data de aniversario:  ");
-        LocalDate novoAniversario = LocalDate.parse(sc.next());
-        contato.setAniversario(novoAniversario);
+        System.out.print("\nInforme o aniversário (dd/MM/yyyy): ");
+        LocalDate aniversario = obterAniversarioAgenda();
+        contato.setAniversario(aniversario);
         System.out.println("\nCONTATO EDITADO!");
         Persistencia.gravarContatos(listaContatos);
     }
+
+    // Remover obterAniversioAgenda e obterRelacaoAgenda <- Original deve ficar em MENU.CLASS
+    
+    public static LocalDate obterAniversarioAgenda() {
+        LocalDate aniversario = null;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        Scanner entrada = new Scanner(System.in);
+        while (aniversario == null) {
+            try {
+                String aniversarioStr = entrada.nextLine();
+                aniversario = LocalDate.parse(aniversarioStr, formatter);
+            } catch (Exception e) {
+                Util.erro("\nFormato de data inválido. Tente novamente.");
+            }
+        }
+
+        return aniversario;
+    }
+
+    public static Relacao obterRelacaoAgenda() {
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("= -------==== Relação ===------- =");
+        for (Relacao r : Relacao.values()) {
+            System.out.println("| " + r.ordinal() + " - " + r.name());
+        }
+        System.out.println("= ------------------------------ =");
+
+        Relacao relacao = null;
+        while (relacao == null) {
+            try {
+                System.out.print("\nEscolha a relação: ");
+                int opcaoRelacao = Integer.parseInt(entrada.nextLine());
+                relacao = Relacao.values()[opcaoRelacao];
+            } catch (Exception e) {
+                Util.erro("\nOpção inválida. Escolha um número correspondente.");
+            }
+        }
+
+        return relacao;
+    }
+
 
     public static void editarCargo(ContatoProfissional contato) {
         Scanner sc = new Scanner(System.in);
