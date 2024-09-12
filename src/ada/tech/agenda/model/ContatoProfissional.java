@@ -42,7 +42,7 @@ public class ContatoProfissional extends Contato {
             | Cargo: %s
             | Empresa: %s
             = ---------------------------------------------
-            """, getNome(), getSobreNome(), Util.formatarTelefone(getTelefone()), getTelefone(), getEmail(), cargo, empresa);
+            """, getNome(), getSobreNome(), Util.formatarTelefone(getTelefone()), getEmail(), cargo, empresa);
         String mensagens = "\n= ---------=== MENSAGENS ===----------- =\n";
         if (getMensagens() != null && !getMensagens().isEmpty()) {
             for (Mensagem mensagem : getMensagens()) {
